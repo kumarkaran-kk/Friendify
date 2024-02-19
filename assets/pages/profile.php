@@ -2,6 +2,8 @@
 global $profile;
 global $profile_post;
 global $user;
+error_reporting(0);
+ini_set('display_errors', 0);
 ?>
 <div class="container col-md-9 col-sm-11 rounded-0">
     <div class="col-12 rounded p-4 mt-4 d-md-flex gap-5">
@@ -109,7 +111,18 @@ global $user;
         <?php
         foreach ($profile_post as $post) {
         ?>
-            <img src="assets/images/posts/<?= $post['post_img'] ?>" data-bs-toggle="modal" data-bs-target="#postview<?= $post['id'] ?>" width="300px" class="rounded" />
+            <?php
+            $baseImagePath = "assets/images/posts/";
+            // Check if post_img is not empty and contains a valid image filename
+            if (!empty($post['post_img'])) {
+                $imagePath = $baseImagePath . $post['post_img'];
+                if (file_exists($imagePath)) {
+            ?>
+                    <img src="<?= $imagePath ?>" loading="lazy" data-bs-toggle="modal" data-bs-target="#postview<?= $post['id'] ?>" width="300px" class="rounded" />
+            <?php
+                }
+            }
+            ?>
             <!-- Modal -->
             <div class="modal fade" id="postview<?= $post['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-xl modal-dialog-centered">

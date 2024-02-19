@@ -23,10 +23,35 @@
                 <div class="mt-3 d-flex justify-content-between align-items-center">
                     <button class="btn btn-primary" type="submit">Sign in</button>
                     <a href="?signup" class="text-decoration-none">Create New Account</a>
-
-
                 </div>
                 <a href="?forgotpassword&newfp" class="text-decoration-none">Forgot password ?</a>
             </form>
         </div>
     </div>
+
+    <style>
+        @media (max-width: 768px) {
+
+            .col-4 {
+                width: 80%;
+                /* Adjust the width as needed */
+                margin: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .col-4 {
+                width: 90%;
+                margin: auto;
+            }
+
+            .form-floating input,
+            .form-floating textarea {
+                font-size: 14px;
+            }
+
+            .btn {
+                font-size: 14px;
+            }
+        }
+    </style>

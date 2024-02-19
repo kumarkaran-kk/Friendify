@@ -43,7 +43,28 @@ global $follow_suggestions;
 
                     </div>
                 </div>
-                <img src="assets/images/posts/<?= $post['post_img'] ?>" loading=lazy class="" alt="...">
+                <?php
+                $baseImagePath = "assets/images/posts/";
+                // Check if post_img is not empty and contains a valid image filename
+                if (!empty($post['post_img'])) {
+                    $imagePath = $baseImagePath . $post['post_img'];
+                    if (file_exists($imagePath)) {
+                ?>
+                        <img src="<?= $imagePath ?>" loading="lazy" class="" alt="...">
+                <?php
+                    }
+                }
+                ?>
+                <?php
+                if ($post['post_text']) {
+                ?>
+                    <div class="card-body">
+                        <?= $post['post_text'] ?>
+                    </div>
+                <?php
+                }
+                ?>
+                <div class="border-bottom"></div>
                 <h4 style="font-size: x-larger" class="p-2 border-bottom d-flex">
                     <span>
                         <?php
@@ -55,27 +76,17 @@ global $follow_suggestions;
                             $unlike_btn_display = 'none';
                         }
                         ?>
-                        <i class="bi bi-heart-fill unlike_btn text-danger" style="display:<?= $unlike_btn_display ?>" data-post-id='<?= $post['id'] ?>'></i>
+                        <i class="bi bi-heart-fill unlike_btn text-danger" style="cursor: pointer; display:<?= $unlike_btn_display ?>" data-post-id='<?= $post['id'] ?>'></i>
                         <i class="bi bi-heart like_btn" style="display:<?= $like_btn_display ?>" data-post-id='<?= $post['id'] ?>'></i>
-
                     </span>
-                    &nbsp;&nbsp;<i class="bi bi-chat-left d-flex align-items-center"><span class="p-1 mx-2 text-small" style="font-size:small" data-bs-toggle="modal" data-bs-target="#postview<?= $post['id'] ?>"><?= count($comments) ?> comments</span></i>
-
+                    &nbsp;&nbsp;<i class="bi bi-chat-left d-flex align-items-center"><span class="p-1 mx-2 text-small" style="font-size:small; cursor:pointer;" data-bs-toggle="modal" data-bs-target="#postview<?= $post['id'] ?>"><?= count($comments) ?> comments</span></i>
                 </h4>
                 <div>
-                    <span class="p-1 mx-2" data-bs-toggle="modal" data-bs-target="#likes<?= $post['id'] ?>"><span id="likecount<?= $post['id'] ?>"><?= count($likes) ?></span> likes</span>
+                    <span class="p-1 mx-2" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#likes<?= $post['id'] ?>"><span id="likecount<?= $post['id'] ?>"><?= count($likes) ?></span> likes</span>
                     <span style="font-size:small" class="text-muted">Posted</span> <?= show_time($post['created_at']) ?>
 
                 </div>
-                <?php
-                if ($post['post_text']) {
-                ?>
-                    <div class="card-body">
-                        <?= $post['post_text'] ?>
-                    </div>
-                <?php
-                }
-                ?>
+
                 <div class="input-group p-2 <?= $post['post_text'] ? 'border-top' : '' ?>">
 
                     <input type="text" class="form-control rounded-0 border-0 comment-input" placeholder="say something.." aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -89,7 +100,27 @@ global $follow_suggestions;
 
                         <div class="modal-body d-md-flex p-0">
                             <div class="col-md-8 col-sm-12">
-                                <img src="assets/images/posts/<?= $post['post_img'] ?>" style="max-height:90vh" class="w-100 overflow:hidden">
+                                <?php
+                                $baseImagePath = "assets/images/posts/";
+                                // Check if post_img is not empty and contains a valid image filename
+                                if (!empty($post['post_img'])) {
+                                    $imagePath = $baseImagePath . $post['post_img'];
+                                    if (file_exists($imagePath)) {
+                                ?>
+                                        <img src="<?= $imagePath ?>" loading="lazy" style="max-height:90vh" class="w-100 overflow:hidden">
+                                <?php
+                                    }
+                                }
+                                ?>
+                                <?php
+                                if ($post['post_text']) {
+                                ?>
+                                    <div class="card-body" style="text-align: center;">
+                                        <?= $post['post_text'] ?>
+                                    </div>
+                                <?php
+                                }
+                                ?>
                             </div>
 
                             <div class="col-md-4 col-sm-12 d-flex flex-column">
@@ -104,7 +135,7 @@ global $follow_suggestions;
                                     <div class="d-flex flex-column align-items-end flex-fill">
                                         <div class=""></div>
                                         <div class="dropdown">
-                                            <span class="<?= count($likes) < 1 ? 'disabled' : '' ?>" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="<?= count($likes) < 1 ? 'disabled' : '' ?>" style="cursor:pointer;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <?= count($likes) ?> likes
                                             </span>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

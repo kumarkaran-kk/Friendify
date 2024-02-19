@@ -296,11 +296,16 @@ function validatePostImage($image_data)
     $response = array();
     $response['status'] = true;
 
-    if (!$image_data['name']) {
-        $response['msg'] = "No image is selected";
-        $response['status'] = false;
-        $response['field'] = 'post_img';
+    if (empty($image_data['name'])) {
+        // No image is selected, but it's not an error
+        return $response;
     }
+
+    // if (!$image_data['name']) {
+    //     $response['msg'] = "No image is selected";
+    //     $response['status'] = false;
+    //     $response['field'] = 'post_img';
+    // }
 
     if ($image_data['name']) {
         $image = basename($image_data['name']);

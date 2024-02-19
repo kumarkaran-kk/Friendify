@@ -62,10 +62,36 @@
             <div class="mt-3 d-flex justify-content-between align-items-center">
                 <button class="btn btn-primary" type="submit">Sign Up</button>
                 <a href="?login" class="text-decoration-none">Already have an account ?</a>
-
-
             </div>
-
         </form>
     </div>
 </div>
+
+<style>
+    @media (max-width: 768px) {
+
+        .col-lg-4,
+        .col-md-8 {
+            width: 80%;
+            margin: auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+
+        .col-lg-4,
+        .col-md-8 {
+            width: 90%;
+            margin: auto;
+        }
+
+        .form-floating input,
+        .form-floating textarea {
+            font-size: 14px;
+        }
+
+        .btn {
+            font-size: 14px;
+        }
+    }
+</style>

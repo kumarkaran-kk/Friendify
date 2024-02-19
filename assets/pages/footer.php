@@ -1,3 +1,8 @@
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+?>
+
 <!-- Modal for add post button -->
 <?php if (isset($_SESSION['Auth'])) { ?>
     <div class="modal fade" id="addpost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -11,18 +16,15 @@
                     <img src="" style="display:none" id="post_img" class="w-100 rounded border">
                     <form method="post" action="assets/php/actions.php?addpost" enctype="multipart/form-data">
                         <div class="my-3">
-                            <input class="form-control" name="post_img" type="file" id="select_post_img">
+                            <input class="form-control" name="post_img" type="file" id="select_post_img" accept="image/*">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Say Something</label>
                             <textarea name="post_text" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
                         </div>
-
                         <button type="submit" class="btn btn-primary">Post</button>
-
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
