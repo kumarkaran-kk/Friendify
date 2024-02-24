@@ -12,7 +12,7 @@ global $follow_suggestions;
 
         showError('post_img');
         if (count($posts) < 1) {
-            echo "<p style='width:93vw' class='p-2 bg-white border rounded text-center my-3 col-12'>Follow Someone or Add a new post</p>";
+            echo "<p class='p-2 bg-white border rounded text-center my-3 col-12'>Follow Someone or Add a new post</p>";
         }
         foreach ($posts as $post) {
             $likes = getLikes($post['id']);
@@ -31,7 +31,7 @@ global $follow_suggestions;
 
                             <div class="dropdown">
 
-                                <i class="bi bi-three-dots-vertical" id="option<?= $post['id'] ?>" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                <i class="bi bi-three-dots-vertical" style="cursor: pointer;" id="option<?= $post['id'] ?>" data-bs-toggle="dropdown" aria-expanded="false"></i>
 
                                 <ul class="dropdown-menu" aria-labelledby="option<?= $post['id'] ?>">
                                     <li><a class="dropdown-item" href="assets/php/actions.php?deletepost=<?= $post['id'] ?>"><i class="bi bi-trash-fill"></i> Delete Post</a></li>
