@@ -146,16 +146,19 @@ if (isset($_GET['addpost'])) {
     $response = validatePostImage($_FILES['post_img']);
 
     if ($response['status']) {
-        if (createPost($_POST, $_FILES['post_img'])) {
+        $result = createPost($_POST, $_FILES['post_img']);
+        if ($result === true) {
             header("location:../../?new_post_added");
         } else {
-            echo "Something went wrong while adding a new post";
+            $_SESSION['error'] = $result;
+            header("location:../../");
         }
     } else {
         $_SESSION['error'] = $response;
         header("location:../../");
     }
 }
+
 
 // for blocking the user
 if (isset($_GET['block'])) {

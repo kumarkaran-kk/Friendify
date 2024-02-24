@@ -58,7 +58,7 @@ global $follow_suggestions;
                 <?php
                 if ($post['post_text']) {
                 ?>
-                    <div class="card-body">
+                    <div class="card-body" style="font-weight: 500;">
                         <?= $post['post_text'] ?>
                     </div>
                 <?php

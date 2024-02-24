@@ -327,21 +327,48 @@ function validatePostImage($image_data)
     return $response;
 }
 
-//for creating a new post 
+// for creating a new post 
 function createPost($text, $image)
 {
     global $db;
+
     $post_text = mysqli_real_escape_string($db, $text['post_text']);
     $user_id = $_SESSION['userdata']['id'];
 
-    $image_name = time() . basename($image['name']);
-    $image_dir = "../images/posts/$image_name";
-    move_uploaded_file($image['tmp_name'], $image_dir);
+    // Check if both post text and image are empty
+    if (empty($post_text) && empty($image['name'])) {
+        return [
+            'msg' => 'Please enter either text or upload an image.',
+            'status' => false,
+            'field' => 'post_img'
+        ];
+    }
 
-    $query = "INSERT INTO posts(user_id,post_text,post_img)";
-    $query .= "VALUES ($user_id,'$post_text','$image_name')";
-    return mysqli_query($db, $query);
+    $image_name = "";
+    if (!empty($image['name'])) {
+        $image_name = time() . basename($image['name']);
+        $image_dir = "../images/posts/$image_name";
+        if (!move_uploaded_file($image['tmp_name'], $image_dir)) {
+            return [
+                'msg' => 'Error uploading image.',
+                'status' => false,
+                'field' => 'post_img'
+            ];
+        }
+    }
+
+    $query = "INSERT INTO posts (user_id, post_text, post_img) VALUES ($user_id, '$post_text', '$image_name')";
+    if (mysqli_query($db, $query)) {
+        return true;
+    } else {
+        return [
+            'msg' => 'Error adding new post to the database.',
+            'status' => false,
+            'field' => 'post_img'
+        ];
+    }
 }
+
 
 // for getting posts
 function getPost()
