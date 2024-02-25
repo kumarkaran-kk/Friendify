@@ -1,3 +1,23 @@
+// Check if the user is online or offline
+function updateOnlineStatus() {
+    var offlineWarning = document.getElementById('offline-warning');
+    if (navigator.onLine) {
+        offlineWarning.style.display = 'none';
+    } else {
+        offlineWarning.style.display = 'block';
+    }
+}
+function closeWarning() {
+    var offlineWarning = document.getElementById('offline-warning');
+    offlineWarning.style.display = 'none';
+}
+window.addEventListener('online', updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+// Initial check when the page loads
+updateOnlineStatus();
+
+
+
 // for preview the post image from user
 var input = document.querySelector("#select_post_img");
 

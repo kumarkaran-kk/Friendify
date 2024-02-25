@@ -34,7 +34,6 @@
 
             .col-4 {
                 width: 80%;
-                /* Adjust the width as needed */
                 margin: auto;
             }
         }

@@ -118,7 +118,7 @@ ini_set('display_errors', 0);
                 $imagePath = $baseImagePath . $post['post_img'];
                 if (file_exists($imagePath)) {
             ?>
-                    <img src="<?= $imagePath ?>" loading="lazy" data-bs-toggle="modal" data-bs-target="#postview<?= $post['id'] ?>" width="300px" class="rounded" />
+                    <img src="<?= $imagePath ?>" style="cursor: pointer;" loading="lazy" data-bs-toggle="modal" data-bs-target="#postview<?= $post['id'] ?>" width="300px" class="rounded" />
             <?php
                 }
             }
@@ -137,7 +137,7 @@ ini_set('display_errors', 0);
 
                             <div class="col-4 d-flex flex-column">
                                 <div class="d-flex align-items-center p-2 border-bottom">
-                                    <div><img src="assets/images/profile/<?= $profile['profile_pic'] ?>" alt="" height="50" class="rounded-circle border">
+                                    <div><img src="assets/images/profile/<?= $profile['profile_pic'] ?>" alt="" height="50" class="rounded-circle border img_pro">
                                     </div>
                                     <div>&nbsp;&nbsp;&nbsp;</div>
                                     <div class="d-flex flex-column justify-content-start align-items-center">
@@ -158,7 +158,7 @@ ini_set('display_errors', 0);
                                         $cuser = getUser($comment['user_id']);
                                     ?>
                                         <div class="d-flex align-items-center p-2">
-                                            <div><img src="assets/images/profile/<?= $cuser['profile_pic'] ?>" alt="" height="40" class="rounded-circle border">
+                                            <div><img src="assets/images/profile/<?= $cuser['profile_pic'] ?>" alt="" height="40" class="rounded-circle border img_pro">
                                             </div>
                                             <div>&nbsp;&nbsp;&nbsp;</div>
                                             <div class="d-flex flex-column justify-content-start align-items-start">

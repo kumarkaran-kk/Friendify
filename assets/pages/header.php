@@ -8,7 +8,14 @@
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/bootstrap/icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet">
-    <title><?=$data['page_title']?></title>
+    <title><?= $data['page_title'] ?></title>
 </head>
 
 <body>
+    <div id="offline-warning">
+        <p> Offline vibes—waiting for that sweet connection. <center>Stay tuned!</center></p>
+        <span id="close-btn" onclick="closeWarning()">
+            <img src="assets\images\icons8-close-window.gif" alt="Close" style="width: 25px; height: 25px;">
+        </span>
+    </div>
+    
