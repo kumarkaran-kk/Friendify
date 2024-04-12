@@ -6,9 +6,8 @@ require_once 'send_code.php';
 if (isset($_GET['signup'])) {
     $response = validateSignupForm($_POST);
     if ($response['status']) {
-
         if (createUser($_POST)) {
-            header('location:../../?login&newuser');
+            header('location:../../?login&newuser=1');
         } else {
             echo "<script>alert('Something went wrong')</script>";
         }

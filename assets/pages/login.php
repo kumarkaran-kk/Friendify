@@ -28,6 +28,15 @@
             </form>
         </div>
     </div>
+    <?php
+    session_start();
+
+    if (isset($_GET['newuser']) && $_GET['newuser'] == 1) {
+        echo "<script>
+        alert('Signup successful! Now enter your login details');
+    </script>";
+    }
+    ?>
 
     <style>
         @media (max-width: 768px) {
